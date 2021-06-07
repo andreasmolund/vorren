@@ -1,12 +1,17 @@
 <template>
   <div class="container">
     <div class="row">
+      <div class="col"> 
+        <h1>Hamnvik</h1>
+      </div>
+    </div>
+    <div class="row">
       <div class="col">
         <table class="table">
           <thead>
             <tr>
               <th scope="col"></th>
-              <th scope="col">Flo</th>
+              <th scope="col">Flo kl.</th>
               <th scope="col">Nivå (cm)</th>
             </tr>
           </thead>

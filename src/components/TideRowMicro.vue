@@ -1,6 +1,6 @@
 <template>
   <tr v-if="isHighTide()" :class="classstyle">
-    <td scope="row">{{ formatDate(waterlevelInstance["$"].time) }}</td>
+    <td scope="row" class="monospace">{{ formatDate(waterlevelInstance["$"].time) }}</td>
     <td>{{ formatTime(waterlevelInstance["$"].time) }}</td>
     <td>{{ waterlevelInstance["$"].value }}</td>
   </tr>
@@ -9,6 +9,7 @@
 
 <script>
 import { format } from "date-fns"
+import { nb } from 'date-fns/locale'
 
 export default {
   props: {
@@ -21,7 +22,7 @@ export default {
   },
   methods: {
     formatDate(strDate) {
-      return format(new Date(strDate), "MMMM do")
+      return format(new Date(strDate), "EEEEEE do MMMM", {locale: nb})
     },
     formatTime(strDate) {
       return format(new Date(strDate), "HH:mm")
@@ -32,3 +33,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.monospace {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+</style>
