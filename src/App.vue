@@ -6,7 +6,7 @@
 <script>
 import TideTable from './components/TideTable.vue'
 import axios from "axios"
-import { format } from "date-fns"
+import { addDays, format } from "date-fns"
 var parseString = require('xml2js').parseString;
 
 export default {
@@ -21,8 +21,12 @@ export default {
   },
   methods: {
     async fetchWaterlevels() {
+      const daysToPredict = 7
+      let from = format(new Date(), "yyyy-MM-dd")
+      let to = format(addDays(new Date(), daysToPredict), "yyyy-MM-dd")
+      let url = 'http://api.sehavniva.no/tideapi.php?tide_request=locationdata&lat=68.7782192&lon=17.1796206&datatype=TAB&lang=nb&place=Har&dst=1&fromtime=' + from + 'T00:00&totime=' + to + 'T23:59&interval=10&flag=high'
       axios
-        .get('http://api.sehavniva.no/tideapi.php?tide_request=locationdata&lat=68.7782192&lon=17.1796206&datatype=TAB&lang=nb&place=Har&dst=1&fromtime=2021-06-06T00:00&totime=2021-06-10T23:59&interval=10&flag=high')
+        .get(url)
         .then(response => {
           var self = this;
           var allWaterlevels = []
