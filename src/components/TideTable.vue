@@ -11,7 +11,7 @@
             </tr>
           </thead>
           <tbody>
-            <TideRow v-for="waterlevel, index in waterlevels" :key="index" :waterlevel="waterlevel" />
+            <TideRow v-for="waterlevel, index in waterlevels" :key="index" :waterlevel="waterlevel" :dayindex="index" />
           </tbody>
         </table>
       </div>

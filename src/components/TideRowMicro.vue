@@ -1,5 +1,5 @@
 <template>
-  <tr v-if="isHighTide()">
+  <tr v-if="isHighTide()" :class="classstyle">
     <td scope="row">{{ formatDate(waterlevelInstance["$"].time) }}</td>
     <td>{{ formatTime(waterlevelInstance["$"].time) }}</td>
     <td>{{ waterlevelInstance["$"].value }}</td>
@@ -17,6 +17,7 @@ export default {
       required: true,
     },
     highTide: Boolean,
+    classstyle: String
   },
   methods: {
     formatDate(strDate) {
