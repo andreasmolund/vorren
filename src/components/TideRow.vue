@@ -1,36 +1,27 @@
 <template>
-  <tr v-if="isHighTide()">
-    <td scope="row">{{ formatDate(waterlevel["$"].time) }}</td>
-    <td>{{ formatTime(waterlevel["$"].time) }}</td>
-    <td>{{ waterlevel["$"].value }}</td>
-  </tr>
-  
+  <TideRowMicro
+      v-for="waterlevelInstance, index in extractLevels(waterlevel)" 
+      :key="index" 
+      :waterlevelInstance="waterlevelInstance" />  
 </template>
 
 <script>
-import { format } from "date-fns"
+import TideRowMicro from './TideRowMicro.vue'
 
 export default {
+  components: {
+    TideRowMicro
+  },
   props: {
     waterlevel: {
       type: Object,
       required: true,
     },
-    highTide: Boolean,
   },
   methods: {
-    formatDate(strDate) {
-      return format(new Date(strDate), "MMMM do")
-    },
-    formatTime(strDate) {
-      return format(new Date(strDate), "HH:mm")
-    },
-    isHighTide() {
-      return this.waterlevel["$"].flag == "high"
+    extractLevels(waterlevelObject) {
+      return waterlevelObject.levels
     }
-  },
-  mounted() {
-    console.log(this.waterlevel["$"].flag)
   },
 }
 </script>

@@ -22,6 +22,7 @@
 <script>
 import TideRow from './TideRow.vue'
 
+
 export default {
   name: 'TideTable',
   components: {
@@ -32,8 +33,6 @@ export default {
       type: Array,
       required: true,
     }
-  },
-  mounted() {
   },
 }
 </script>
