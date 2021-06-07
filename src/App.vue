@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     async fetchWaterlevels() {
-      const daysToPredict = 7
+      const daysToPredict = 14
       let from = format(new Date(), "yyyy-MM-dd")
       let to = format(addDays(new Date(), daysToPredict), "yyyy-MM-dd")
       let url = 'https://api.sehavniva.no/tideapi.php?tide_request=locationdata&lat=68.7782192&lon=17.1796206&datatype=TAB&lang=nb&place=Har&dst=1&fromtime=' + from + 'T00:00&totime=' + to + 'T23:59&interval=10&flag=high'
